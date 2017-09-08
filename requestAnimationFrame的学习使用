@@ -17,3 +17,13 @@
 requestID 为一个非0的整数，指代当前的这个动画，可以把这个参数传入 cancelAnimationFrame(requestID),用来取消这个动画的执行。
 
 三.几个例子
+1.理解动画的返回值requestID
+let requestID = requestAnimationFrame(function () {
+	console.log('000');
+});
+
+let requestID2 = requestAnimationFrame(function () {
+	console.log('111');
+});
+
+console.log(requestID,requestID2);  // 1 2
