@@ -9,3 +9,11 @@
 之后方可执行。requestAnimationFrame()的出现，就解决了这个问题。
   requestAnimationFrame()是不可设置动画代码间隔时间的，因为它会自动采用系统时间间隔，保证最佳的绘制效率。让各种网页动画效果能有一个统一的刷新机制，从而
 节省系统资源，提高系统性能，保证动画效果。
+
+二.requestAnimationFrame()的使用
+  requestAnimationFrame()方法的完整写法为:
+  let requestID = requestAnimationFrame(callback);
+其中 callback 为传入该方法的回调函数,该回调函数中包含了执行动画的代码；
+requestID 为一个非0的整数，指代当前的这个动画，可以把这个参数传入 cancelAnimationFrame(requestID),用来取消这个动画的执行。
+
+三.几个例子
