@@ -27,3 +27,12 @@ let requestID2 = requestAnimationFrame(function () {
 });
 
 console.log(requestID,requestID2);  // 1 2
+
+2.动画的封装调用。可以通过将动画封装成函数的形式,进行调用以及传参。
+function animation() {
+  let requestId = requestAnimationFrame(function () {
+  	document.body.style.background = 'blue';
+  })
+}
+
+animation();
