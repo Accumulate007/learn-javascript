@@ -18,6 +18,32 @@ fn.name;      //this is fn
 fn.sayName(); //this is fn
 fn.age;       //30(因为构造函数中的this是指向生成的实例的,所以这个age属性也会赋给实例)
 这个简单的例子可以说明,定义在函数prototype属性上的属性和方法，可以被这个构造函数的实例所继承共享,这就是JavaScript中继承的基本原理。
+那么,JavaScript中其他类型的对象有prototype属性吗?答案是没有,只有函数类型的对象有这个属性。
+let arr = [1,2,3];
+let obj = {name: 'aaa'};
+
+arr.prototype;  //undefined
+obj.prototype;  //undefined
+
+所有内置构造函数都有自己的原型对象(包括Array,String,Boolean,Function,RegExp,Date,Object),因此
+数组类型的实例方法,是从Array.prototype上继承的
+函数类型的实例方法,是从Function.prototype上继承的
+字符串类型的实例方法,是从String.prototype上继承的
+...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
