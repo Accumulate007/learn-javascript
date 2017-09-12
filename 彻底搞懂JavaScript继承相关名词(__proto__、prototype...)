@@ -70,18 +70,3 @@ arr.forObj;   //这是Object.prototype特意准备的属性
 arr.forArr;   //这是Array.prototype特意准备的属性
 arr对象本身是没有forObj和forArr这两个属性的，但是它可以通过自身的__proto__往原型链上一级一级查找，如果原型链上有这个属性，它就继承这个属性。
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
