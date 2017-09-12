@@ -58,10 +58,17 @@ Boolean.prototype.__proto__ === Object.prototype;     //true
 Number.prototype.__proto__ === Object.prototype;      //true
 Object.prototype === null;    //这里就到顶了
 
-综上，我们可以理解一个概念：原型链。所有对象的继承顺序一般都是： 实例对象自身 -> 内置构造函数的prototype -> Object.prototype。
+综上，我们可以理解一个概念：原型链。对象的继承顺序一般都是： 实例对象自身 -> 内置构造函数的prototype -> Object.prototype。
 这就是所谓的原型链。而对象的__proto__属性，就是你查找原型链的依据。
+当试图去得到一个对象的某个属性时，如果对象本身没有这个属性，那么会去它的__proto__中一级一级查找。
+通过一个例子再理解一下。
+Object.prototype.forObj = '这是Object.prototype特意准备的属性';
+Array.prototype.forArr = '这是Array.prototype特意准备的属性';
+let arr = [1,2,3];
 
-
+arr.forObj;   //这是Object.prototype特意准备的属性
+arr.forArr;   //这是Array.prototype特意准备的属性
+arr对象本身是没有forObj和forArr这两个属性的，但是它可以通过自身的__proto__往原型链上一级一级查找，如果原型链上有这个属性，它就继承这个属性。
 
 
 
