@@ -1,7 +1,7 @@
   在前端的项目开发中，动态获取某个元素的某个属性值是非常基础、常见的需求，今天就总结一下自己在开发中关于这方面的一些学习和积累。
   说到常用的动态获取元素某个属性值，主要有两个API: getComputedStyle(),currentStyle()。先分别对这两个API做详细的介绍。
   
-  一、getComputedStyle()
+一、getComputedStyle()
   Window.getComputedStyle()返回某个元素计算后的属性值，它的具体语法是：
   let style = window.getComputedStyle(element, [pseudoElt])[attr];
   element是对应的元素
@@ -11,14 +11,39 @@ element元素的伪类的height。(伪类元素是不支持宽高的,需要displ
   attr就是你所要获取的对应的属性，中括号是一种写法，还有另一种写法: window.getComputedStyle(elem,null).getPropertyValue("height");这种写法跟中括号
 的写法作用是一致的，只是显得更高大上。
 
+  以上就是getComputedStyle()这个API的大致内容，但是，这个方法还有另一种写法:
+let style = document.defaultView.getComputedStyle(element, [pseudoElt])[attr];
+参数，用法跟上面所讲的一抹一样，只是写法上略微有些不一样。
 
+二、element.currentStyle
+currentStyle是一个IE浏览器独有的API，支持从IE6起的所有IE浏览器，它的作用跟getComputedStyle()一样，也是获取元素的某个计算属性值的，具体语法：
+let style = element.currentStyle[attr];
+参数都很简单，没什么可说的。
 
+三、兼容所有浏览器的写法
+综合上面的两个方法，我们可以给出一个通用的，兼容所有浏览器的获取元素样式的方法
+function getStyle(element, attr) {
+  let style = null;
+  if(element.currentStyle) {
+    style = element.currentStyle[attr];
+  }else{
+    style = document.defaultView.getComputedStyle(element, null)[attr];
+  }
+  return style;
+}
+不过这里有几点需要注意：
+1.获取的样式都是带有单位的,如px,需要通过parseInt(style)或者parseFloat(style)转换成不带单位的数字
+2.一些属性，例如scrollTop,是无法通过此函数获取的，需要进行相应的扩展
+3.例如获取元素的height,是不包含元素的padding和border值的。想获取包含padding值的需要使用element.clientHeight，想获取包含padding和border的,需要使
+用offsetHeight。
 
+四、element.style
+element.style能够获取一个元素style内联属性所设置的样式,注意,元素标签外部所设置的属性，是无法通过element.style获取的。
+举个例子:
+<div class="container" style="height:200px;width:150px;background:red;padding:10px;">
+let DIV = document.querySelector('container');
+DIV.style.height;     //200px
+DIV.style.padding;    //10px
 
-
-
-
-
-
-
-
+element.style还有一个cssText属性,它是一个字符串,包含了element元素style属性中设置的所有内容。
+DIV.style.cssText;    //height: 200px; width: 150px; background: red; padding: 10px;
