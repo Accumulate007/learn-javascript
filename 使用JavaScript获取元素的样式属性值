@@ -1,0 +1,24 @@
+  在前端的项目开发中，动态获取某个元素的某个属性值是非常基础、常见的需求，今天就总结一下自己在开发中关于这方面的一些学习和积累。
+  说到常用的动态获取元素某个属性值，主要有两个API: getComputedStyle(),currentStyle()。先分别对这两个API做详细的介绍。
+  
+  一、getComputedStyle()
+  Window.getComputedStyle()返回某个元素计算后的属性值，它的具体语法是：
+  let style = window.getComputedStyle(element, [pseudoElt])[attr];
+  element是对应的元素
+  pseudoElt是一个可选的参数,对于普通元素可以省略，或者设置为null(设置为null是平时更为习惯的写法)。那么什么是非普通元素呢？例如:after,:before等这些伪
+类就是所谓的非普通元素。当我们要获取一个元素的伪类的样式时,需要设置这个参数，比如 window.getComputedStyle(element, ':after')['height'],这是获取
+element元素的伪类的height。(伪类元素是不支持宽高的,需要display:block之后才可以显示设置宽高)
+  attr就是你所要获取的对应的属性，中括号是一种写法，还有另一种写法: window.getComputedStyle(elem,null).getPropertyValue("height");这种写法跟中括号
+的写法作用是一致的，只是显得更高大上。
+
+
+
+
+
+
+
+
+
+
+
+
