@@ -1,0 +1,29 @@
+在学习JavaScript的过程中，会遇到一些专题性的内容，比如继承，函数等等，这些内容足以写一篇，甚至是一系列的文章。当然，也会遇到一些相对细小的模块，这些知识
+点没有那么庞大，也无需专门的一篇文章来讲解，所以就想到把这些平时工作学习中遇到的琐碎的知识点集合到一篇文章中，供日后查阅。
+
+一、void运算符
+void运算符的一般语法为： void expression。
+expression是一个表达式,void运算符对表达式进行求值，然而特别的是,无论表达式的求值结果是什么,void运算符都返回 undefined。
+因此，void 运算符通常只用于获取 undefined 的原始值，一般使用 void(0)（等同于 void 0）。也就是说 void 0 === undefined;   //true
+但是,void还有一个特殊的用途,就是让JavaScript引擎把一个函数识别成函数表达式而不是函数声明（语句）。
+void function iife() {
+  console.log('this is a iife function');
+}();
+// this is a iife function
+
+再说说我们最常见的javascript:void(0);
+当用户点击一个以 javascript: URI 时，浏览器会对冒号后面的代码进行求值，然后把求值的结果显示在页面上，这时页面基本上是一大片空白，这通常不是我们想要的。
+只有当这段代码的求值结果是undefined的时候,浏览器才会停止这个默认行为。而void(0)的结果就是undefined,所以这就是我们经常在a链接中使用javascript:void(0)
+的原因。
+
+
+
+
+
+
+
+
+
+
+
+
