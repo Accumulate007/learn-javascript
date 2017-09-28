@@ -7,9 +7,14 @@ let date = new Date(2017-09-28);
 let date = new Date(2017/09/28);  //在安卓或者其它浏览器下也是支持这种格式的
 
 
-2.
+2.iframe的网址限制问题
+<iframe src=""></iframe>
+在iframe的src标签中,如果打开网页www.baidu.com是会失败的,需要给网址添加请求协议http或者https,比如
+<iframe src="http://www.baidu.com"></iframe>
+这样就能顺利的打开网页了。
 
 
+3.
 
 
 
