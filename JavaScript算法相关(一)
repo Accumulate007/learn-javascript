@@ -22,8 +22,19 @@ const updated = initial.map((x) => {
 console.log(updated); //[{id: 1, score: 'one'}, {id: 2, score: 'two'}, {id: 3, score: 'three'}]
 
 
+3.删除对象上的某个属性
+// 删除obj对象上的a属性
+const obj = {
+	a: 'aaa',
+	b: 'bbb',
+	c: 'ccc'
+};
+
+const {a, ...newObj} = obj;
+console.log(newObj);	//{b: "bbb", c: "ccc"}
 
 
+4.
 
 
 
