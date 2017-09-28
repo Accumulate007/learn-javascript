@@ -1,0 +1,31 @@
+掌握JavaScript中的一些基本算法，常用算法(其实一般也用不到)，对于提升技术的逼格还是非常有好处的。
+
+1.数组去重的方法
+const arr = [1,2,3,4,5,5,3,2,9,9,0];
+
+// 方法一
+const newArr = [...new Set(arr)];
+console.log(newArr);	// [1, 2, 3, 4, 5, 9, 0]
+
+// 方法二
+const newArr2 = Array.from(new Set(arr));
+console.log(newArr2);	// [1, 2, 3, 4, 5, 9, 0]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
