@@ -12,6 +12,14 @@ const newArr2 = Array.from(new Set(arr));
 console.log(newArr2);	// [1, 2, 3, 4, 5, 9, 0]
 
 
+2.根据属性更新数组中的某个数据
+const initial = [{id: 1, score: 'one'}, {id: 2, score: 'two'}, {id: 3, score: 'fouraaa'}];
+const newValue = {id: 3, score: 'three'};
+
+const updated = initial.map((x) => {
+	return x.id === newValue.id ? newValue : x;
+});
+console.log(updated); //[{id: 1, score: 'one'}, {id: 2, score: 'two'}, {id: 3, score: 'three'}]
 
 
 
