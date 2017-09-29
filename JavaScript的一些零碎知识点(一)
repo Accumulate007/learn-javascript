@@ -17,11 +17,24 @@ void function iife() {
 的原因。
 
 
+二、cookie的设置
+设置的cookie的语法是: document.cookie = '.....';
 
+设置单个key-value的cookie时候:
+document.cookie = 'name=' + 'jack';
+document.cookie;                      // 'name=jack'
 
+设置多个cookie值的方式:
+document.cookie = 'name=' + 'jack';
+document.cookie = 'age=' + 50;
 
+docuemnt.cookie;                    //'name=jack,age=50'
 
+如果出现了同名的cookie值,后面的会覆盖前面的值:
+document.cookie = 'name=' + 'jack';
+document.cookie = 'name=messi';
 
+document.cookie;                  //'name=messi'
 
 
 
