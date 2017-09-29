@@ -36,7 +36,8 @@ document.cookie = 'name=messi';
 
 document.cookie;                  //'name=messi'
 
-
+本地的cookie会默认在发送HTTP请求的时候,在请求头里被发送到服务端。
+在退出浏览器之后，cookie会被清空。
 
 
 
