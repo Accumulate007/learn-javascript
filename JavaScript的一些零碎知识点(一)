@@ -1,7 +1,7 @@
 在学习JavaScript的过程中，会遇到一些专题性的内容，比如继承，函数等等，这些内容足以写一篇，甚至是一系列的文章。当然，也会遇到一些相对细小的模块，这些知识
 点没有那么庞大，也无需专门的一篇文章来讲解，所以就想到把这些平时工作学习中遇到的琐碎的知识点集合到一篇文章中，供日后查阅。
 
-一、void运算符
+1.void运算符
 void运算符的一般语法为： void expression。
 expression是一个表达式,void运算符对表达式进行求值，然而特别的是,无论表达式的求值结果是什么,void运算符都返回 undefined。
 因此，void 运算符通常只用于获取 undefined 的原始值，一般使用 void(0)（等同于 void 0）。也就是说 void 0 === undefined;   //true
@@ -17,7 +17,7 @@ void function iife() {
 的原因。
 
 
-二、cookie的设置
+2.cookie的设置
 设置的cookie的语法是: document.cookie = '.....';
 
 设置单个key-value的cookie时候:
@@ -39,5 +39,7 @@ document.cookie;                  //'name=messi'
 本地的cookie会默认在发送HTTP请求的时候,在请求头里被发送到服务端。
 在退出浏览器之后，cookie会被清空。
 
+
+3.onload事件和DOMContentReady的区别
 
 
