@@ -41,5 +41,9 @@ document.cookie;                  //'name=messi'
 
 
 3.onload事件和DOMContentReady的区别
+onload: 页面完全加载完成后触发，包括页面里的视频、音频、图片等等都加载完毕。
+DOMContentReady: 当初始HTML文档被完全加载和解析完成之后，DOMContentLoaded 事件被触发，而无需等待样式表、图像和子框架完成加载。
 
+
+4.
 
