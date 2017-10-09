@@ -80,10 +80,18 @@ function showPreview(source) {
 FileReader对象允许Web应用程序异步读取存储在用户计算机上的文件（或原始数据缓冲区）的内容,使用 File 或 Blob 对象指定要读取的文件或数据。
 
 
-6.
+6.URI、URL、URN的概念
+URI: 统一资源标识符,URI包括URL和URN,URL和URN也有交集,但URI不止URL和URN。
+URL: URL是URI的一种,不仅标识了web资源,还指定了操作或者获取方式,同时指出了主要访问机制和网络位置。
+URN: URN是URI的一种,用特定命名空间的名字标识资源,使用URN可以在不知道其网络位置及访问方式的情况下讨论资源。
+
+举例
+URI: http://bitpoetry.io/posts/index.html#intro
+URL: http://bitpoetry.io/posts/index.html
+URN: bitpoetry.io/posts/index.html#intro
 
 
-
+7.
 
 
 
