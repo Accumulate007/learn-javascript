@@ -58,11 +58,29 @@ i.浏览器发送请求获取嵌入在HTML中的资源,包括:图片、音频、
 j.浏览器发送异步请求
 
 
+5.上传图片文件预览的原生小方法
+HTML代码如下:
+<input type="file" name="file" onchange="showPreview(this)">
+<img src="" width="816" height="373" id="img1">
+
+javascript代码如下:
+function showPreview(source) {
+	let file = source.files[0];
+
+	if(window.FileReader) {
+		let fr = new FileReader();
+		fr.onloadend = function (ev) {
+			document.getElementById('img1').src = ev.target.result;
+			console.log(ev.target.result);	//这是一个base64格式的图片文件
+		}
+		fr.readAsDataURL(file);
+	}
+}
+
+FileReader对象允许Web应用程序异步读取存储在用户计算机上的文件（或原始数据缓冲区）的内容,使用 File 或 Blob 对象指定要读取的文件或数据。
 
 
-
-
-
+6.
 
 
 
