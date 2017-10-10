@@ -91,7 +91,25 @@ URL: http://bitpoetry.io/posts/index.html
 URN: bitpoetry.io/posts/index.html#intro
 
 
-7.
+7.document.documentElement到底是什么?
+document.documentElement其实就是一个文档的<html></html>标签,也就是这个文档的根节点。
+在同一个文档中: document.children[0] === document.documentElement;	//true
+<html></html>也是document唯一的元素节点,即：
+document.children[0];	//<html></html>
+document.children[1];	//undefined
+
+
+8.
+
+
+
+
+
+
+
+
+
+
 
 
 
