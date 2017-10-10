@@ -7,18 +7,24 @@ let date = new Date(2017-09-28);
 let date = new Date(2017/09/28);  //在安卓或者其它浏览器下也是支持这种格式的
 
 
-2.iframe的网址限制问题
+2.iframe的同源网址限制问题
 <iframe src=""></iframe>
 在iframe的src标签中,如果打开网页www.baidu.com是会失败的,需要给网址添加请求协议http或者https,比如
 <iframe src="http://www.baidu.com"></iframe>
 这样就能顺利的打开网页了。
+这是iframe下的一个限制,就是在iframe中打开非同源网站,需要添加网址中的网络协议: http
 
 
-3.
+3.获取scrollTop的兼容写法
+IE6/7/8下获取scrollTop:    document.body.scrollTop;
+Safari下获取scrollTop:     window.pageYOffset;   //一般情况下不作考虑
+标准浏览器下获取scrollTop:  document.documentElement.scrollTop;
+
+兼容性写法为:
+let scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;  //顺序不可变更
 
 
-
-
+4.
 
 
 
