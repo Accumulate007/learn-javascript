@@ -29,11 +29,14 @@ let scrollTop = document.documentElement.scrollTop || window.pageYOffset || docu
 解决办法是有input等能够获取焦点唤起键盘的布局中，不使用固定定位,使用position: absolute;代替。
 
 
-5.
+5.IOS下事件绑定问题。
+IOS下不允许将事件直接绑定到document或者body上,这给需要进行事件委托的需求造成了一定的困难。
+解决办法有:
+1.如果在document或者body上绑定了事件,则在需要响应事件的元素上添加CSS  cursor:pointer;这样能够委托成功
+2.将目标元素(即响应事件的元素)改成a标签或者button元素。
 
 
-
-
+6.
 
 
 
