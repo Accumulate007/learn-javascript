@@ -24,7 +24,12 @@ Safari下获取scrollTop:     window.pageYOffset;   //一般情况下不作考�
 let scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;  //顺序不可变更
 
 
-4.
+4.移动端固定定位问题
+在移动端,通过position:fixed;定位的元素,在软键盘被唤起之后,fixed定位会失效。
+解决办法是有input等能够获取焦点唤起键盘的布局中，不使用固定定位,使用position: absolute;代替。
+
+
+5.
 
 
 
