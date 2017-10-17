@@ -59,8 +59,18 @@ a.在B元素没有默认click事件的情况下,应该使用统一的事件，�
 b.在B元素存在默认click事件的情况下,应该及时阻止A元素的默认点击事件, ev.preventDefault();
 
 
-6.
+6.IOS下input控件点击黑色背景问题。
+在ios下，如果给一个input控件设置了点击选中状态下active状态的背景图片，会发现，整个input框的背景是一片黑色。
+解决办法是给input框添加css样式: background-color: transparent; //设置背景色为透明
 
+
+7.IOS下的click失效问题。
+在ios下，click事件有时候会出现失效的问题，特别是click事件绑定在input等控件上,click事件会出现非常奇怪的现象。可能需要长按或者重一点的点击,才能触发
+这些元素的click事件，用户体验非常不好。
+解决办法就是,在IOS下使用touch事件,给input元素绑定touchend事件来代替click事件，这样可以解决click事件的触发问题。
+
+
+8.
 
 
 
