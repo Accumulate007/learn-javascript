@@ -70,11 +70,27 @@ b.在B元素存在默认click事件的情况下,应该及时阻止A元素的默�
 解决办法就是,在IOS下使用touch事件,给input元素绑定touchend事件来代替click事件，这样可以解决click事件的触发问题。
 
 
-8.
+8.IOS下iframe的设置问题。
+在ios下，如果把iframe作为一个页面容器，来存放载入其他的页面，会出现一个问题，就是iframe被截断，无法显示完整的外部链接网站。所以，需要对ios下的iframe
+做一个特别的设置。
+假设我们的HTML解构是这样的:
+<div class="wrap">
+  <iframe class="iframe"></iframe>
+</div>
+动态的JS设置如下:
+let meta = navigator.userAgent;
+let reg = /iPad|iPhone/i;
+if(reg.test(meta)) {                //判断是IOS环境下才进行此设置
+  let iframeBox = document.querySelector('.wrap');
+  let iframe = document.querySelector('.iframe');
+  
+  iframeBox.style.overflowX = 'hidden';
+  iframeBox.style.overflowY = 'scroll';
+  iframeBox.style.webkitOverflowScrolling = 'touch';
+}
 
 
-
-
+9.
 
 
 
