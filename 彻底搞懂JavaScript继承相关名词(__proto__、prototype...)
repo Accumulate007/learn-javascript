@@ -70,3 +70,16 @@ arr.forObj;   //这是Object.prototype特意准备的属性
 arr.forArr;   //这是Array.prototype特意准备的属性
 arr对象本身是没有forObj和forArr这两个属性的，但是它可以通过自身的__proto__往原型链上一级一级查找，如果原型链上有这个属性，它就继承这个属性。
 
+
+3.constructor(构造器属性)
+constructor实际上是一个指向用于创建该对象的构造器函数的引用。
+例如:
+function Father (name) {
+  this.name = name;
+}
+
+let child = new Father('jack');
+child.name = 'jack';
+child.constructor === Father;   //true
+
+
