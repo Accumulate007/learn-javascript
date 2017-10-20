@@ -90,7 +90,20 @@ if(reg.test(meta)) {                //判断是IOS环境下才进行此设置
 }
 
 
-9.
+9.IOS下如果页面中同时使用了iframe和position:fixed定位,则固定定位失效。
+类似如下HTML:
+<body>
+  <div>this div is fixed</div>
+  <iframe></iframe>
+</body>
+
+div是一个固定定位的元素,则在此情况下固定定位失效.
+解决办法是改成绝对定位。
+
+
+10.
+
+
 
 
 
