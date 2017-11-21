@@ -14,6 +14,20 @@ XSS的攻击者可以利用XSS的漏洞来窃取包括用户身份信息在内�
 其它的防御措施还有诸如设置CSP HTTP Header，输入验证，开启浏览器XSS防御等，但这些都存在被绕过的可能，并不能完全保证防御XSS攻击。
 
 二、iframe的风险
+我们经常会使用iframe来实现第三方的广告、插件、页面等，因为iframe的内容是由第三方提供的，默认情况下不受我们的控制，他们可以在iframe中运行JavaScript脚本
+flash插件、弹出对话框等。如果iframe中的域名因为过期而被恶意攻击者抢注，或者第三方被黑客攻击，iframe中的内容被替换掉了，从而利用用户浏览器中的安全漏洞下
+载安装木马、恶意勒索软件等等，就会导致比较严重的问题。
+好在HTML5中，iframe有了一个sandbox的安全属性，通过它可以对iframe的行为进行各种限制。使用sandbox最简单的方式是在iframe元素中添加这个属性就好：
+<iframe sandbox src=""></iframe>
+如果像这样只是添加了sandbox属性而保持属性值为空的话，那么浏览器会对iframe实施最严格的调控限制，基本上就是除了静态资源外，其它什么都做不了，比如不准提交
+表单、不准弹窗、不准执行脚本等等，连Origin都会被强制重新分配一个唯一的值，也就是说iframe中的页面访问它自己的服务器都会被算作跨域请求。
+sandbox一些比较常用的参数配置如下：
+1. allow-forms: 允许iframe提交form表单
+2. allow-popops: 允许iframe弹出新的窗口或者标签页
+3. allow-script: 允许iframe中执行JavaScript脚本
+4. allow-same-origin: 允许iframe中的网页开启同源策略
+
+三、点击劫持
 
 
 
