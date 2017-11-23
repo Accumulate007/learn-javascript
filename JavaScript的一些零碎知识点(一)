@@ -99,10 +99,11 @@ document.children[0];	//<html></html>
 document.children[1];	//undefined
 
 
-8.
+8.在循环或者判断中使用break
+在for循环中使用break,则表示结束这次循环遍历，到此为止
 
 
-
+9.
 
 
 
