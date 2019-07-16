@@ -279,16 +279,33 @@ t1.then(function(s) {
    console.log(s);   // thenObj~~~
 });
 ```
-3)
+3)如果传递的参数是不具备thenable属性的对象，或者传递的是普通类型的数据，那么Promise.resolve()会返回一个Promise实例，并将状态改为resolve，把这个数据作为参数传递过去。
+```
+let obj = {};
 
+let t1 = Promise.resolve(obj);
+t1.then(function(s) {
+   console.log(s === obj);	// true
+});
+```
+4)如果不传递任何参数，则直接返回一个resolve状态的Promise对象。
+```
+let t1 = Promise.resolve();
 
+t1.then(function(s) {
+   console.log(s);	// undefined
+});
+```
 
+#### 4.Promise.reject
+Promise.reject(obj)方法也会返回一个新的 Promise 实例，该实例的状态为rejected。传递给Promise.reject(obj)方法的参数obj，会原封不动的作为参数传递给实例的reject回调函数作为参数。
+```
+let obj = {'name': 'this is an obj'}
+let t1 = Promise.reject(obj);
 
-
-
-
-
-
-
-
-
+t1.then(function(s) {
+   console.log(s);
+}).catch(function(e) {
+   console.log(e);	// {name: "this is an obj"}
+})
+```
