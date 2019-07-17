@@ -27,8 +27,9 @@ Proxy的用法很简单，都遵循如下的基本形式
 let proxy = new Proxy(obj, handler);
 ```
 obj是你所需要代理和拦截的对象，handler是一个对象，这个对象上面有很多方法，这些方法就是对操作所做的拦截行为。这个handler里的方法不是随意写的，目前为
-止，handler内一共支持13中拦截操作。分别是
-1)*get(target, propKey, receiver)：用于拦截对象的属性读取。receiver参数其实就是Proxy的当前实例。*
+止，handler内一共支持13中拦截操作。分别是</br>
+
+1) *get(target, propKey, receiver)：用于拦截对象的属性读取。receiver参数其实就是Proxy的当前实例。*
 ```
 let obj = {
 	'name': 'jack',
@@ -45,7 +46,7 @@ let proxy = new Proxy(obj, {
 proxy.name;	// 'map'
 ```
 
-2)*set(target, propKey, value, receiver):拦截对对象属性的设置。*
+2) *set(target, propKey, value, receiver):拦截对对象属性的设置。*
 ```
 let obj = {
 	'name': 'jack',
@@ -65,21 +66,61 @@ proxy.age = 65;
 console.log(obj);   // {name: "jack", age: 65}
 ```
 
+3) *has(target, propKey):用于拦截对proxy属性进行for in的操作，它返回一个布尔值。*
+```
+let obj = {
+   'name': 'jack',
+   age: 25
+}
 
+let proxy = new Proxy(obj, {
+   has: function(target, property) {
+      if(property.indexOf('age') > -1) {   // 只有 age 属性可以被for in
+	return true;
+      }
+      return false;
+   }
+})
 
+console.log('name' in proxy);	// false
+console.log('age' in proxy);	// true
+```
 
+4)*deleteProperty(target, propKey):用于拦截对proxy属性进行delete的操作，它返回一个布尔值,代表该属性是否可以被删除*
+```
+let obj = {
+   'name': 'jack',
+   age: 25
+}
 
+let proxy = new Proxy(obj, {
+    deleteProperty: function(target, property) {
+	if(property.indexOf('age') > -1) {	// age 属性不可被删除
+	   return false;
+	}
+	delete target[property];	// 满足条件之后，可以在原对象身上进行相应的操作
+    }
+})
 
+console.log(delete proxy.age);	// false
+console.log(delete proxy.name);	// true
+console.log(obj);	// {age: 25}
+```
 
+5)*ownKeys(target)：拦截Object.getOwnPropertyNames(proxy)、Object.getOwnPropertySymbols(proxy)、Object.keys(proxy)、for...in循环，返回一个数组。*</br>
 
+6)*getOwnPropertyDescriptor(target, propKey)：拦截Object.getOwnPropertyDescriptor(proxy, propKey)，返回属性的描述对象。*</br>
 
+7)*defineProperty(target, propKey, propDesc)：拦截Object.defineProperty(proxy, propKey, propDesc）、Object.defineProperties(proxy, propDescs)，返回一个布尔值。*</br>
 
+8)*preventExtensions(target)：拦截Object.preventExtensions(proxy)，返回一个布尔值。*</br>
 
+9)*getPrototypeOf(target)：拦截Object.getPrototypeOf(proxy)，返回一个对象。*</br>
 
+10)*isExtensible(target)：拦截Object.isExtensible(proxy)，返回一个布尔值。*</br>
 
+11)*setPrototypeOf(target, proto)：拦截Object.setPrototypeOf(proxy, proto)，返回一个布尔值。如果目标对象是函数，那么还有两种额外操作可以拦截。*</br>
 
+12)*apply(target, object, args)：拦截 Proxy 实例作为函数调用的操作，比如proxy(...args)、proxy.call(object, ...args)、proxy.apply(...)。*</br>
 
-
-
-
-
+13)*construct(target, args)：拦截 Proxy 实例作为构造函数调用的操作，比如new proxy(...args)。*</br>
