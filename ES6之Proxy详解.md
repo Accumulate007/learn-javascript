@@ -21,7 +21,7 @@ let descript = Object.getOwnPropertyDescriptor(obj, name);
 上面只是所谓对象操作的一些例子，JavaScript中还有非常多对于对象的操作。而Proxy的作用就是，在你操作这些对象的时候，在这个中间设置一层拦截，可以修改，
 或者说定制操作后的结果。
 
-#### Proxy的基本用法
+### Proxy的基本用法
 Proxy的用法很简单，都遵循如下的基本形式
 ```
 let proxy = new Proxy(obj, handler);
@@ -124,3 +124,20 @@ console.log(obj);	// {age: 25}
 12)*apply(target, object, args)：拦截 Proxy 实例作为函数调用的操作，比如proxy(...args)、proxy.call(object, ...args)、proxy.apply(...)。*</br>
 
 13)*construct(target, args)：拦截 Proxy 实例作为构造函数调用的操作，比如new proxy(...args)。*</br>
+
+### Proxy使用需要注意的点
+1.所有的操作都是对Proxy实例对象proxy的操作，而不是对被代理对象本身的操作，否则拦截不会起作用。</br>
+
+2.如果handler没有设置任何拦截方法，则相当于直接操作被代理对象本身。
+```
+let obj = {
+   'name': 'jack',
+   age: 25
+}
+
+let proxy = new Proxy(obj, {});
+
+proxy.name = 'abc';
+proxy.city = 'hangzhou';
+console.log(obj);   // {name: "abc", age: 25, city: "hangzhou"}
+```
