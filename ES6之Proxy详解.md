@@ -141,3 +141,16 @@ proxy.name = 'abc';
 proxy.city = 'hangzhou';
 console.log(obj);   // {name: "abc", age: 25, city: "hangzhou"}
 ```
+
+3.Proxy构造函数的实例，可以作为创建其它对象的原型。
+```
+let proxy = new Proxy({}, {
+    get:function(target, property) {
+	return 'aaa';
+    }
+});
+
+let obj = Object.create(proxy);
+obj.name;	// aaa
+obj.age;	// aaa
+```
