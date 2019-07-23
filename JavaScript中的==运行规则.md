@@ -36,21 +36,10 @@ Number(function() {return 3});  // NaN
 Number({});   // NaN
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+### ==操作符的比较规则
+在比较之前，==会进行隐式的类型转换，它遵守以下的原则:</br>
+**1.undefined == null为true，这是语言强制规定的。两边的数据只要有一个是null或者undefined，而另一个不是null或者undefined，则返回false。**</br>
+**2.如果等式两边都是引用类型的数据，则比较引用是否相等，不相等则返回false**</br>
+**3.只要等式两边数据出现了NaN，则返回false**</br>
+**4.将等式两边的数据进行Number()转换，比较转换后的结果.**
 
