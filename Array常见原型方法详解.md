@@ -90,5 +90,21 @@ console.log(arr1);	// [2, 10, 14, 8, 4, 12, 6]
 console.log(a1);	// ["2k", "10k", "14k", "8k", "4k", "12k", "6k"]
 ```
 
+### 9.reduce(func)
+reduce() 方法接收一个函数作为累加器，数组中的每个值（从左到右）开始缩减，最终计算为一个值。空数组不会有任何操作。
+```
+let numbers = [65, 44, 12, 4];
+ 
+function getSum(total, num) {
+  console.log(`---total is ${total}, num is ${num}---`);
+  // ---total is 65, num is 44---
+  // ---total is 109, num is 12---
+  // ---total is 121, num is 4---
+  return total + num;
+}
+
+let result = numbers.reduce(getSum);
+console.log('the result is ', result);	// the result is  125
+```
 
 
