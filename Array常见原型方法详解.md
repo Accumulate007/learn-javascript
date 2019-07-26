@@ -107,7 +107,7 @@ let result = numbers.reduce(getSum);
 console.log('the result is ', result);	// the result is  125
 ```
 
-### 10.filter()
+### 10.filter(func)
 filter() 方法创建一个新的数组，新数组中的元素是通过检查指定数组中符合条件的所有元素。该方法不会改变原数组。
 ```
 let numbers = ['abc', 'kk', '-a-', 'ok', 'hello', 'alone'];
