@@ -76,7 +76,19 @@ arr1.sort(sortNumber);
 console.log(arr1);	// [2, 4, 6, 8, 10, 12, 14]
 ```
 
+### 8.map(func)
+map() 方法返回一个新数组，数组中的元素为原始数组元素调用函数处理后的值。该方法不会改变原始数组。
+```
+let arr1 = [2, 10, 14, 8, 4, 12, 6];
 
+function util(item) {
+    return item + 'k';
+}
+
+let a1 = arr1.map(util);
+console.log(arr1);	// [2, 10, 14, 8, 4, 12, 6]
+console.log(a1);	// ["2k", "10k", "14k", "8k", "4k", "12k", "6k"]
+```
 
 
 
