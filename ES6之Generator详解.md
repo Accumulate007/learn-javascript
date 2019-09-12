@@ -28,7 +28,32 @@ c).如果没有再遇到新的yield表达式，就一直运行到函数结束，
 d).如果该函数没有return语句，则返回的对象的value属性值为undefined。<br/>
 yield后面的表达式，只有当调用next方法、内部指针指向该语句时才会执行，类似于一种“惰性求值”。<br/>
 
-#### 1.2 使用Generator函数让对象具有Iterator接口
+#### 1.2 next()方法的传参
+yeild表达式本身是没有返回值的，或者说总是返回undefined。我们可以通过next()方法传递一个参数，这个参数会被作为上一个yeild表达式的返回值。
+```
+function* foo(x) {
+  let y = 2 * (yield (x + 1));
+  let z = yield (y / 3);
+  return (x + y + z);
+}
+
+let a = foo(5);
+a.next();	// {value: 6, done: false}
+a.next();	// {value: NaN, done: false}
+a.next();  // {value: NaN, done: true}
+
+let b = foo(5);
+b.next();			// {value: 6, done: false}
+b.next(12);		// {value: 8, done: false}
+b.next(13);   // {value: 42, done: true}
+```
+在第一次调用a.next()的时候，因为函数传入了一个参数5，所以第一个yeild后面(x+1)的值是6，所以返回的value就是6。第二次调用a.next()的时候，因为没有传递参数，而上一个yeild本身是不返回值的，默认是返回undefined，所以y=2*(undefined)的结果是NaN，所以第二个yeild后面的表达式(y / 3)的结果也就是NaN了。
+第三次调用a.next()的时候，return返回的值是(5+NaN+NaN)，结果自然也是NaN。<br/>
+第一次调用b.next()跟a.next()一样，返回的是6。第二次调用b.next(12)的时候，因为传递了一个参数12，相当于是设置了上一个yeild的返回值是12，y=2*(12)；
+所以y的值就是24，第二个yeild后面的表达式(y / 3)的值就是8，所以第二次调用b.next()返回的value就是8。最后一次调用b.next(13)并且传递了参数13，相当于
+把z的值设置成了13，所以return相当于(5 + 24 + 13)结果为42。<br/>
+
+#### 1.3 使用Generator函数让对象具有Iterator接口
 我们知道，可以被for...of遍历的对象，都是天然具有Iterator接口的对象。但是有些对象可能天然不具备Iterator接口，那我们可以手动部署Iterator接口，以便该对象可以被for...of遍历。对象的遍历器生成函数，都是部署在对象的Symbol.iterator属性上的。
 ```
 let myIterator = {};
