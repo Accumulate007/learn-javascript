@@ -34,15 +34,15 @@ yield后面的表达式，只有当调用next方法、内部指针指向该语�
 let myIterator = {};
 
 myIterator[Symbol.iterator] = function* () {
-	yield 1;
-	yield 2;
-	yield 3;
+   yield 1;
+   yield 2;
+   yield 3;
 }
 
 [...myIterator];	// [1, 2, 3]
 
 for(let key of myIterator) {
-	console.log(key);	// 1 2 3
+   console.log(key);	// 1 2 3
 }
 ```
 
