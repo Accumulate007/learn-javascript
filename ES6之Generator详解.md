@@ -71,5 +71,6 @@ for(let key of myIterator) {
 }
 ```
 
+### 二、Generator函数的相关使用
 
 
