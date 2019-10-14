@@ -6,11 +6,11 @@ Object.defineProperty(obj, prop, descriptor);
 Object.getOwnPropertyDescriptor(obj, key)获取，例如。
 ```javascript
 let testObj = {
-	name: 'jack',
-	city: {
-		a: 'hz',
-		b: 'sh'
-	}
+    name: 'jack',
+    city: {
+	a: 'hz',
+	b: 'sh'
+    }
 }
 
 let des = Object.getOwnPropertyDescriptor(testObj, 'name');
